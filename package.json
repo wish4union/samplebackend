@@ -4,8 +4,7 @@
   "description": "Backend API for Birthday Wishes App",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": ["node", "express", "mongodb", "api"],
   "author": "Dhana",
