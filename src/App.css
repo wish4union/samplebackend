@@ -1,0 +1,489 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   App.css  –  Birthday Wishes Dashboard styles
+   Design language: warm luxury – deep plum header, cream body, gold accents
+   Fonts: Playfair Display (display) + DM Sans (body)
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+  --clr-bg:        #faf8f5;
+  --clr-bg2:       #f2ede6;
+  --clr-header:    #1a0a2e;
+  --clr-header2:   #2d1054;
+  --clr-gold:      #f0a500;
+  --clr-gold-lt:   #fff3cc;
+  --clr-text:      #2a1a0e;
+  --clr-muted:     #7a6a5e;
+  --clr-border:    #e0d8cf;
+  --clr-white:     #ffffff;
+  --clr-success:   #2e7d32;
+  --clr-error:     #c62828;
+  --clr-warning:   #e65100;
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+
+  --shadow-sm:  0 2px 8px rgba(0,0,0,.06);
+  --shadow-md:  0 6px 24px rgba(0,0,0,.10);
+  --shadow-lg:  0 16px 48px rgba(0,0,0,.14);
+
+  --ff-display: 'Playfair Display', Georgia, serif;
+  --ff-body:    'DM Sans', system-ui, sans-serif;
+
+  --transition: 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Reset & Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-body);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: 'Menlo', 'Monaco', monospace;
+  background: rgba(0,0,0,.07);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: .88em;
+}
+
+/* ── Layout ────────────────────────────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+.app-header {
+  background: linear-gradient(135deg, var(--clr-header) 0%, var(--clr-header2) 100%);
+  color: #fff;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 32px rgba(0,0,0,.35);
+}
+
+.app-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px 18px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.app-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-header__logo {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(240,165,0,.5));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.app-header__title {
+  font-family: var(--ff-display);
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.5px;
+  text-shadow: 0 2px 12px rgba(240,165,0,.3);
+}
+
+.app-header__subtitle {
+  font-size: .85rem;
+  color: rgba(255,255,255,.55);
+  font-weight: 300;
+  letter-spacing: .5px;
+}
+
+.app-header__date {
+  font-size: .85rem;
+  color: rgba(255,255,255,.65);
+  font-weight: 400;
+  letter-spacing: .3px;
+}
+
+/* ── Status strip ──────────────────────────────────────────────────────────── */
+.status-strip {
+  background: rgba(0,0,0,.25);
+  display: flex;
+  gap: 10px;
+  padding: 10px 40px;
+  flex-wrap: wrap;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: .78rem;
+  font-weight: 500;
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.82);
+  letter-spacing: .3px;
+  transition: background var(--transition);
+}
+
+.status-pill--green  { background: rgba(76,175,80,.28); color: #a5d6a7; }
+.status-pill--red    { background: rgba(244,67,54,.28); color: #ef9a9a; }
+.status-pill--amber  { background: rgba(240,165,0,.22); color: #ffe082; }
+.status-pill--info   { background: rgba(33,150,243,.22); color: #90caf9; }
+
+.status-pill__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.status-pill--green .status-pill__dot { background: #69f0ae; }
+.status-pill--red   .status-pill__dot { background: #ff5252; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .5; transform: scale(1.3); }
+}
+
+/* ── Main ──────────────────────────────────────────────────────────────────── */
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 32px 64px;
+}
+
+/* ── Offline banner ────────────────────────────────────────────────────────── */
+.offline-banner {
+  background: #fff3e0;
+  border: 1px solid #ffb74d;
+  border-left: 4px solid #ff9800;
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  margin-bottom: 28px;
+  font-size: .9rem;
+  color: var(--clr-warning);
+  line-height: 1.7;
+}
+
+/* ── Dashboard grid ────────────────────────────────────────────────────────── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .app-header__inner { padding: 20px 20px 14px; }
+  .status-strip { padding: 8px 20px; }
+  .app-main { padding: 24px 16px 48px; }
+}
+
+/* ── Section ───────────────────────────────────────────────────────────────── */
+.section {
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--clr-border);
+}
+
+.section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section__title {
+  font-family: var(--ff-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--clr-text);
+  letter-spacing: -.3px;
+}
+
+.section__badge {
+  font-size: .75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--clr-bg2);
+  color: var(--clr-muted);
+  letter-spacing: .3px;
+}
+
+.section__badge--hot {
+  background: var(--clr-gold-lt);
+  color: #b37700;
+}
+
+/* ── Card list ─────────────────────────────────────────────────────────────── */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Birthday Card ─────────────────────────────────────────────────────────── */
+.birthday-card {
+  display: flex;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+  overflow: hidden;
+  background: var(--clr-white);
+  transition: box-shadow var(--transition), transform var(--transition);
+  position: relative;
+}
+
+.birthday-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Golden shimmer on today's birthday cards */
+.birthday-card--today {
+  border-color: var(--clr-gold);
+  background: linear-gradient(135deg, #fffdf5 0%, #fffbe6 100%);
+  box-shadow: 0 0 0 2px rgba(240,165,0,.18), var(--shadow-sm);
+  animation: cardGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes cardGlow {
+  from { box-shadow: 0 0 0 2px rgba(240,165,0,.18), var(--shadow-sm); }
+  to   { box-shadow: 0 0 0 4px rgba(240,165,0,.32), var(--shadow-md); }
+}
+
+.birthday-card__bar {
+  width: 5px;
+  flex-shrink: 0;
+}
+
+.birthday-card__content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+/* Avatar circle */
+.birthday-card__avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .9rem;
+  flex-shrink: 0;
+  letter-spacing: .5px;
+}
+
+.birthday-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.birthday-card__name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--clr-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.birthday-card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.birthday-card__dept {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+.birthday-card__date {
+  font-size: .8rem;
+  color: var(--clr-muted);
+}
+
+.birthday-card__days {
+  font-size: .75rem;
+  font-weight: 600;
+  color: #1565c0;
+  background: #e3f2fd;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* Result message below meta */
+.birthday-card__result {
+  margin-top: 6px;
+  font-size: .78rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  animation: fadeIn .25s ease;
+}
+
+@keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+
+.birthday-card__result--success {
+  color: var(--clr-success);
+  background: #e8f5e9;
+}
+.birthday-card__result--error {
+  color: var(--clr-error);
+  background: #ffebee;
+}
+
+/* Send button */
+.birthday-card__btn {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--ff-body);
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), opacity var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .3px;
+}
+
+.birthday-card__btn--idle {
+  background: var(--clr-header);
+  color: #fff;
+}
+.birthday-card__btn--idle:hover {
+  background: var(--clr-header2);
+  transform: scale(1.04);
+}
+
+.birthday-card__btn--loading {
+  background: #9e9e9e;
+  color: #fff;
+  opacity: .85;
+  cursor: not-allowed;
+}
+
+.birthday-card__btn--success {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.birthday-card__btn--error {
+  background: #c62828;
+  color: #fff;
+}
+
+/* Spinner */
+.spinner {
+  width: 13px; height: 13px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Skeleton loading ──────────────────────────────────────────────────────── */
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-card {
+  height: 76px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, #f0ece6 25%, #e8e2dc 50%, #f0ece6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Empty state ───────────────────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--clr-muted);
+  font-size: .95rem;
+}
+
+.empty-state__emoji {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ── Error banner ──────────────────────────────────────────────────────────── */
+.error-banner {
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-size: .88rem;
+  color: #b71c1c;
+  line-height: 1.7;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────────── */
+.app-footer {
+  background: var(--clr-header);
+  color: rgba(255,255,255,.4);
+  text-align: center;
+  padding: 20px 32px;
+  font-size: .8rem;
+  letter-spacing: .3px;
+}
+
+.app-footer strong { color: rgba(255,255,255,.7); }
+.app-footer em     { color: var(--clr-gold);       }
