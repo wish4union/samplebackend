@@ -28,7 +28,7 @@ const staff = [
     name: "Anjali Nair",
     email: "anjali.nair@company.com",
     phone: "+919876543212",
-    birthday: "04-27",
+    birthday: "05-02",
     department: "Marketing",
     avatar: "AN"
   },
