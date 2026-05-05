@@ -55,7 +55,7 @@ const staff = [
     "name": "Meera Krishnan new",
     "email": "meera.krishnan@company.com",
     "phone": "+919876543215",
-    "birthday": "03-15",
+    "birthday": "05-06",
     "department": "Engineering",
     "avatar": "MK"
   },
