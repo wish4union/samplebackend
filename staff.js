@@ -19,7 +19,11 @@ const staff = [
     name: "Rahul Verma",
     email: "rahul.verma@company.com",
     phone: "+919876543211",
+<<<<<<< HEAD
     birthday: "04-25",
+=======
+    birthday: "05-07",
+>>>>>>> 42d3980 (initial commit new file)
     department: "Design",
     avatar: "RV"
   },
@@ -28,7 +32,11 @@ const staff = [
     name: "Anjali Nair",
     email: "anjali.nair@company.com",
     phone: "+919876543212",
+<<<<<<< HEAD
     birthday: "05-02",
+=======
+    birthday: "05-06",
+>>>>>>> 42d3980 (initial commit new file)
     department: "Marketing",
     avatar: "AN"
   },
@@ -51,6 +59,7 @@ const staff = [
     avatar: "SP"
   },
   {
+<<<<<<< HEAD
     "id": 6,
     "name": "Meera Krishnan new",
     "email": "meera.krishnan@company.com",
@@ -58,6 +67,15 @@ const staff = [
     "birthday": "03-15",
     "department": "Engineering",
     "avatar": "MK"
+=======
+    id: 6,
+    name: "Meera Krishnan",
+    email: "meera.krishnan@company.com",
+    phone: "+919876543215",
+    birthday: "03-15",
+    department: "Engineering",
+    avatar: "MK"
+>>>>>>> 42d3980 (initial commit new file)
   },
   {
     id: 7,
