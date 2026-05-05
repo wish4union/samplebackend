@@ -10,7 +10,7 @@ const staff = [
     name: "Priya Sharma",
     email: "priya.sharma@company.com",
     phone: "+919876543210",          // WhatsApp-registered number (E.164)
-    birthday: "04-22",               // MM-DD  (year is ignored)
+    birthday: "05-05",               // MM-DD  (year is ignored)
     department: "Engineering",
     avatar: "PS"
   },
