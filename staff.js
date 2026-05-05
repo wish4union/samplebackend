@@ -7,12 +7,12 @@
 const staff = [
   {
     id: 1,
-    name: "Priya Sharma",
+    name: "dhana",
     email: "priya.sharma@company.com",
-    phone: "+919876543210",          // WhatsApp-registered number (E.164)
+    phone: "+919701415172",          // WhatsApp-registered number (E.164)
     birthday: "05-05",               // MM-DD  (year is ignored)
     department: "Engineering",
-    avatar: "PS"
+    avatar: "dd"
   },
   {
     id: 2,
