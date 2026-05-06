@@ -26,6 +26,8 @@ const app  = express();
 const PORT = process.env.PORT || 5000;
 
 // ── Middleware ────────────────────────────────────────────────────────────────
+const cors = require("cors");
+
 const allowedOrigins = [
   "http://localhost:3000",
   "https://sample-rho-jade.vercel.app"
@@ -33,19 +35,19 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // Postman / server-to-server
+    if (!origin) return callback(null, true);
 
-    // remove trailing slash just in case
-    const normalizedOrigin = origin.replace(/\/$/, "");
+    const cleanOrigin = origin.replace(/\/$/, ""); // removes trailing /
 
-    if (allowedOrigins.includes(normalizedOrigin)) {
+    if (allowedOrigins.includes(cleanOrigin)) {
       return callback(null, true);
     }
 
-    console.log("❌ Blocked CORS request from:", origin);
-    return callback(new Error("Not allowed by CORS"));
+    console.log("❌ Blocked origin:", origin);
+    return callback(new Error("CORS blocked"));
   },
-  methods: ["GET", "POST"]
+  methods: ["GET", "POST"],
+  credentials: false
 }));
 
 // ─────────────────────────────────────────────────────────────────────────────
