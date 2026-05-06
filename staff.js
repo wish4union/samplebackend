@@ -18,8 +18,8 @@ const staff = [
     id: 2,
     name: "Rahul Verma",
     email: "rahul.verma@company.com",
-    phone: "+919876543211",
-    birthday: "04-25",
+    phone: "+919490529054",
+    birthday: "05-06",
     department: "Design",
     avatar: "RV"
   },
@@ -45,8 +45,8 @@ const staff = [
     id: 5,
     name: "Sanjay Patel",
     email: "sanjay.patel@company.com",
-    phone: "+919876543214",
-    birthday: "05-01",
+    phone: "+919490529054",
+    birthday: "05-07",
     department: "Finance",
     avatar: "SP"
   },
