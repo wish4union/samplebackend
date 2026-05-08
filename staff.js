@@ -19,7 +19,7 @@ const staff = [
     name: "ddd",
     email: "rahul.verma@company.com",
     phone: "+919490529054",
-    birthday: "05-07",
+    birthday: "05-08",
     department: "Design",
     avatar: "RV"
   },
